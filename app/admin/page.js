@@ -35,7 +35,7 @@ const AdminPage = () => {
     if (user) {
       fetchAdminStatus();
     }
-  }, []);
+  },);
 
   // Redirect if not admin or not signed in
   useEffect(() => {

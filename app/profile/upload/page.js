@@ -39,7 +39,7 @@ const UploadBook = () => {
       checkVendorStatus();
       console.log(isVendor);
     }
-  }, []);
+  }, [user, isVendor]);
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState('');
   const [loading, setLoading] = useState(false);

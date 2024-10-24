@@ -44,7 +44,7 @@ const OrdersPage = () => {
     if (user) {
         fetchOrders();
     }
-  }, []);
+  }, );
 
   if (loading) return <p>Loading orders...</p>;
   if (error) return <p className="text-red-500">{error}</p>;

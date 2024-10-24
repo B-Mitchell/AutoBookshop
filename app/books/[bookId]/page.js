@@ -70,7 +70,7 @@ const BookDetailsPage = ({ params }) => {
     if (user) {
       fetchBookDetails();
     }
-  }, []);
+  },);
 
   // Handle order placement
   const handleOrder = async (e) => {
