@@ -66,7 +66,7 @@ const VendorBooksPage = () => {
     if (user) {
       fetchBooks();
     }
-  },);
+  },[]);
 
   // Filter books based on search query
   const filteredBooks = books.filter(book =>
