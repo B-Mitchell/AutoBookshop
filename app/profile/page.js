@@ -244,7 +244,7 @@ const ProfilePage = () => {
     if (user) {
       fetchProfile();
     }
-  }, );
+  }, [user]);
 
   // Handle form submission for new registration (user/vendor)
   const handleRegistration = async (e) => {
