@@ -224,24 +224,26 @@ const ProfilePage = () => {
   const [isLoading, setIsLoading] = useState(true); // Loading state
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Fetch user profile from Supabase by Clerk ID
-  const fetchProfile = async () => {
-    if (!user) return;
-
-    const { data, error } = await supabase
-      .from('users') // Assuming the table is named 'users'
-      .select('*')
-      .eq('clerk_id', user.id); // Use Clerk ID to find the user
-
-    if (data && data.length > 0) {
-      setProfileData(data[0]); // Store the user's profile data if it exists
-    }
-    setIsLoading(false);
-  };
+  
   const toggleVendor = () => setIsVendor((prev) => !prev);
 
   useEffect(() => {
     if (user) {
+      // Fetch user profile from Supabase by Clerk ID
+      const fetchProfile = async () => {
+        if (!user) return;
+
+        const { data, error } = await supabase
+          .from('users') // Assuming the table is named 'users'
+          .select('*')
+          .eq('clerk_id', user.id); // Use Clerk ID to find the user
+
+        if (data && data.length > 0) {
+          setProfileData(data[0]); // Store the user's profile data if it exists
+        }
+        setIsLoading(false);
+      };
+
       fetchProfile();
     }
   }, [user]);

@@ -21,31 +21,6 @@ const BookDetailsPage = ({ params }) => {
 
   // const userId = user.id;
   // Fetch book details based on bookId
-  const fetchBookDetails = async () => {
-    setLoading(true);
-    try {
-      const { data, error } = await supabase
-        .from('books')
-        .select('*')
-        .eq('id', bookId)
-        .single();
-
-      if (error) {
-        throw error;
-      }
-      setBook(data);
-      if (user) {
-        fetchVendorAccount(data.vendorID); // Fetch vendor account details
-        console.log(data.vendorID)
-      }
-      
-    } catch (error) {
-      console.error('Error fetching book details:', error);
-      setError('Error fetching book details.');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   // Fetch vendor's account details based on vendorID
   const fetchVendorAccount = async (vendorID) => {
@@ -65,21 +40,43 @@ const BookDetailsPage = ({ params }) => {
       console.error('Error fetching vendor account details:', error);
     }
   };
-
   useEffect(() => {
-    //if (user) {
-      fetchBookDetails();
-    }//
-  },[]);
+    const fetchBookDetails = async () => {
+      setLoading(true);
+      try {
+        const { data, error } = await supabase
+          .from('books')
+          .select('*')
+          .eq('id', bookId)
+          .single();
+  
+        if (error) {
+          throw error;
+        }
+        setBook(data);
+        if (user) {
+          fetchVendorAccount(data.vendorID); // Fetch vendor account details
+          console.log(data.vendorID)
+        }
+        
+      } catch (error) {
+        console.error('Error fetching book details:', error);
+        setError('Error fetching book details.');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBookDetails();
+  }, [bookId, user]);
 
   // Handle order placement
   const handleOrder = async (e) => {
     e.preventDefault();
     const userId = user.id;
       if (!user) {
-    alert('Please log in to place an order');
-    return;
-  }
+        alert('Please log in to place an order');
+        return;
+      }
     // Prepare the order data
     const orderData = {
       bookID: bookId,
