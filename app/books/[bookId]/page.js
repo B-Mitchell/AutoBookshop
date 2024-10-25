@@ -67,15 +67,19 @@ const BookDetailsPage = ({ params }) => {
   };
 
   useEffect(() => {
-    if (user) {
+    //if (user) {
       fetchBookDetails();
-    }
-  },[user]);
+    }//
+  },[]);
 
   // Handle order placement
   const handleOrder = async (e) => {
     e.preventDefault();
     const userId = user.id;
+      if (!user) {
+    alert('Please log in to place an order');
+    return;
+  }
     // Prepare the order data
     const orderData = {
       bookID: bookId,
@@ -107,7 +111,7 @@ const BookDetailsPage = ({ params }) => {
   };
 
   if (loading) return <p>Loading book details...</p>;
-  if (!isSignedIn) return <p>please create an account to view this page</p>;
+  //if (!isSignedIn) return <p>please create an account to view this page</p>;
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
