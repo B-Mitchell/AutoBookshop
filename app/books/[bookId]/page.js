@@ -112,7 +112,7 @@ const BookDetailsPage = ({ params }) => {
   if (error) return <p className="text-red-500 text-center mt-3 text-[1.1rem]">{error}</p>;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 border mt-7 border-gray-300 rounded-md shadow-lg">
+    <div className="max-w-4xl mx-auto px-4 py-8 md:border mt-7 border-gray-300 rounded-md shadow-lg">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-2">
         {/* Book Details */}
         <div className="p-4 border-r border-gray-300">
