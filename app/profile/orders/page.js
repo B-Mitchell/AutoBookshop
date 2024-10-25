@@ -4,7 +4,7 @@ import { supabase } from '@/app/supabase';
 import { useUser } from '@clerk/nextjs';
 
 const OrdersPage = () => {
-  const { user } = useUser(); // Clerk auth
+  const { user, isSignedIn } = useUser(); // Clerk auth
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -44,10 +44,13 @@ const OrdersPage = () => {
     if (user) {
         fetchOrders();
     }
-  }, );
+  }, []);
+  if (!isSignedIn) {
+    return <p className='text-center mt-3 text-[1.1rem]'>Please sign in to view your orders.</p>;
+  }
 
-  if (loading) return <p>Loading orders...</p>;
-  if (error) return <p className="text-red-500">{error}</p>;
+  if (loading) return <p className='text-center mt-3 text-[1.1rem] animate-pulse'>Loading orders...</p>;
+  if (error) return <p className="text-red-500 text-center mt-3 text-[1.1rem]">{error}</p>;
 
   return (
     <div className="max-w-6xl mx-auto p-4">

@@ -45,11 +45,11 @@ const AdminPage = () => {
   }, [isAdmin, isLoading, router]);
 
   if (!isSignedIn) {
-    return <p>Please sign in to access the admin dashboard.</p>;
+    return <p className='text-center mt-3 text-[1.1rem]'>Please sign in to access the admin dashboard.</p>;
   }
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <p className='text-center mt-3 text-[1.1rem] animate-pulse'>Loading...</p>;
   }
 
   return (

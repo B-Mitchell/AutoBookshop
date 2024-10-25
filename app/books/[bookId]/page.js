@@ -72,11 +72,11 @@ const BookDetailsPage = ({ params }) => {
   // Handle order placement
   const handleOrder = async (e) => {
     e.preventDefault();
-    const userId = user.id;
       if (!user) {
         alert('Please log in to place an order');
         return;
       }
+      const userId = user.id;
     // Prepare the order data
     const orderData = {
       bookID: bookId,
@@ -107,9 +107,9 @@ const BookDetailsPage = ({ params }) => {
     setProofImage(e.target.files[0]);
   };
 
-  if (loading) return <p>Loading book details...</p>;
+  if (loading) return <p className='text-center mt-3 text-[1.1rem] animate-pulse'>Loading book details...</p>;
   //if (!isSignedIn) return <p>please create an account to view this page</p>;
-  if (error) return <p className="text-red-500">{error}</p>;
+  if (error) return <p className="text-red-500 text-center mt-3 text-[1.1rem]">{error}</p>;
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 border mt-7 border-gray-300 rounded-md shadow-lg">
