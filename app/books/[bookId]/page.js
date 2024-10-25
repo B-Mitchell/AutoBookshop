@@ -107,7 +107,7 @@ const BookDetailsPage = ({ params }) => {
   };
 
   if (loading) return <p>Loading book details...</p>;
-  if (!user) return <p>please create an account to view this page</p>;
+  if (!isSignedIn) return <p>please create an account to view this page</p>;
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
