@@ -121,7 +121,8 @@ const BookDetailsPage = ({ params }) => {
           <p className="text-md mb-2 text-gray-600">Department: {book.faculty}</p>
           <p className="text-md mb-2 text-gray-600">In Stock: {book.inStock}</p>
           <p className="text-xl font-semibold mb-4 text-green-700">${book.amount}</p>
-          <p className="mb-6 text-gray-700">{book.desc}</p>
+          <p className="mb-6 text-gray-700">Book Description: {book.desc}</p>
+          <p className="mb-6 text-gray-700">Vendor Description: {book.vendorDesc}</p>
 
           {/* Order Button */}
           <button 
