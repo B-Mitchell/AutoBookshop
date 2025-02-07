@@ -105,7 +105,7 @@ const VendorBooksPage = () => {
               <td className="border border-gray-300 p-2 w-4 overflow-hidden whitespace-nowrap text-ellipsis text-[.9rem]" title={book.id}>{book.id}</td>
               <td className="border border-gray-300 p-2">{book.title}</td>
               <td className="border border-gray-300 p-2">{book.author}</td>
-              <td className="border border-gray-300 p-2">${book.amount}</td>
+              <td className="border border-gray-300 p-2 text-green-700">{book.amount}</td>
               <td className="border border-gray-300 p-2">{book.inStock}</td>
               <td className="border border-gray-300 p-2">
                 <button 
